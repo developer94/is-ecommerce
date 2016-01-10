@@ -1,0 +1,9 @@
+body {
+    background-image: url('../img/background.png');
+    /*background-repeat: repeat;*/
+    color: lightgray;
+}
+
+#content {
+    margin-bottom: 20px;
+}
