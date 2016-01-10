@@ -1,0 +1,66 @@
+Nullable fields are allowed for due to UX decisions.
+
+## UX storyboard:
+
+### Customer:
+
+#### Registration:
+    Registration is implied by the project specification.
+    Anonymous browsing is out of question.
+
+    To aleviate the registration hurdle, a simplified customer registration
+    process is available. Initially the user is required to input just the
+    username, email and password.
+
+    Once registered, the user can go ahead and browse the products before
+    leaving additional information on the site.
+
+    [Improvements]
+    Further improvements could be made by making use of just the email, instead
+    of both username and email requirements.
+
+#### Checkout/Reservation:
+    Once a reservation request is made, the customer must ensure that the
+    remaining information is filled in.
+
+#### Profile completion reminders:
+    On the homepage, the customer should be reminded of the profile completion.
+
+
+
+### Company:
+
+### Registration:
+    Provide full details about the company operations
+
+
+
+
+
+
+## Models
+
+Account:
+    username
+    password
+    email
+
+    address         - null, !blank (company)
+    telephone       - null, !blank (company)
+    city            - null, !blank (company)
+    country         - null, !blank (company)
+
+
+
+Customer:
+    first_name      - null
+    last_name       - null
+    gender          - null
+
+
+
+Company:
+    PIB
+    LK
+    uID
+

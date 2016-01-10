@@ -1,0 +1,37 @@
+{% load static %}
+
+<!-- Sidebar -->
+<div id="sidebar-categories" class="sidebar">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+              Categories
+        </li>
+        {% for category in categories %}
+        <li>
+          <a href="#">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if companies %}
+<div id="sidebar-companies" class="sidebar">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+              Categories
+        </li>
+        {% for company in companies %}
+        <li>
+          <a href="#">{{ company.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<!-- /#sidebar-wrapper -->
+
+<!--<ul class="list-group">-->
+<!--{% for category in categories %}-->
+  <!--<a href="#" class="list-group-item">{{ category.name }}</a>-->
+<!--{% endfor %}-->
+<!--</ul>-->

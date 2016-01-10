@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+{{ block.super }}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/browse-sidebar.css' %}" rel="stylesheet">
+<link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block extrascripts %}
+{% endblock %}
+
+{% block sidebar %}
+  {% include 'customer/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="row" style="margin-top: 20px">
+    {% if companies %}
+      <div class="col-md-offset-5 col-md-6 well">
+    {% else %}
+      <div class="col-md-offset-3 col-md-8 well">
+    {% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% load static %}
+
+<!-- Sidebar -->
+<div id="sidebar-categories" class="sidebar">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          Operations
+        </li>
+        {% for category in categories %}
+        <li>
+          <a href="#">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

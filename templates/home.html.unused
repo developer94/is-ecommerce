@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% if is_customer %}
+  {% include 'browsing.html %}
+{% else %}
+  {% block content %}
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <h1>Under construction</h1>
+        <h4>The company interface is currently under construction, thanks for your understanding</h4>
+      </div>
+    </div>
+  {% endblock %}
+{% endif %}

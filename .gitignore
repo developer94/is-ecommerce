@@ -1,0 +1,6 @@
+**/*.pyc
+static/
+tmp/
+db.sqlite3
+.agignore
+context.sh
