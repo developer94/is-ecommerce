@@ -3,6 +3,7 @@
 <!-- Sidebar -->
 <div id="sidebar-categories" class="sidebar">
     <ul class="sidebar-nav">
+      {% if categories %}
         <li class="sidebar-brand">
               Categories
         </li>
@@ -11,6 +12,14 @@
           <a href="#">{{ category.name }}</a>
         </li>
         {% endfor %}
+      {% endif %}
+
+        <li class="sidebar-brand">
+              Customer operations
+        </li>
+        <li>
+          <a href="{% url 'customer:update' %}">Update personal info</a>
+        </li>
     </ul>
 </div>
 
@@ -18,7 +27,7 @@
 <div id="sidebar-companies" class="sidebar">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-              Categories
+              Companies
         </li>
         {% for company in companies %}
         <li>

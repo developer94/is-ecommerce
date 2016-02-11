@@ -1,5 +1,8 @@
 from django.contrib import admin
-from customer.models import Customer, ComponentReservation
+from customer.models import Customer
+from customer.forms import CustomerForm
 
-admin.site.register(Customer)
-admin.site.register(ComponentReservation)
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    exclude = ('details_provided',)
+

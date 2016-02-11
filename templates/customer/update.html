@@ -1,0 +1,11 @@
+{% extends 'customer/browse.html' %}
+{% load crispy_forms_tags %}
+
+{% block data %}
+<form action="{% url 'customer:update' %}" method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input class="btn btn-primary" type="submit" value="Update"></input>
+  <a class="btn btn-default" href="{% url 'customer:browse' %}">Cancel</a>
+</form>
+{% endblock %}

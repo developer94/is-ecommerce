@@ -1,0 +1,17 @@
+{% extends 'customer/browse.html' %}
+{% load crispy_forms_tags %}
+
+{% block data %}
+<!--<form action="{% url 'customer:update' %}" method="post">-->
+  <!--{% csrf_token %}-->
+  <!--<div class="input-group">-->
+    <!--<a href="#">New component</a>-->
+    <!--{{ form.component|as_crispy_field }}-->
+  <!--</div>-->
+  <!--{{ form.n_available|as_crispy_field }}-->
+  <!--<input class="btn btn-primary" type="submit" value="Update"></input>-->
+  <!--<a class="btn btn-default" href="{% url 'customer:browse' %}">Cancel</a>-->
+<!--</form>-->
+
+{% crispy form %}
+{% endblock %}

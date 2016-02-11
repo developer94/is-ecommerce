@@ -6,10 +6,11 @@
         <li class="sidebar-brand">
           Operations
         </li>
-        {% for category in categories %}
         <li>
-          <a href="#">{{ category.name }}</a>
+          <a href="{% url 'company:create_item' %}">Create item</a>
+          <a href="{% url 'company:list_items' %}">List items</a>
+          {#<!--<a href="{% url 'company:reservations' %}">Reservations</a>-->#}
+          {#<!--<a href="{% url 'company:orders' %}">Orders</a>-->#}
         </li>
-        {% endfor %}
     </ul>
 </div>

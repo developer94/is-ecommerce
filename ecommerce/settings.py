@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_extensions',
     'extra_views',
+    'autocomplete_light',
     #'debug_toolbar',
 
     'django.contrib.admin',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'account',
     'company',
     'customer',
+    'component.apps.ComponentConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -138,3 +140,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Admin configuration
+ADMIN_SITE_HEADER = "Computer Components IS"

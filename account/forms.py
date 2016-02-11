@@ -1,6 +1,9 @@
 from django import forms
 from django.forms import ModelForm
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import make_password
 
 from account import models
 
@@ -24,6 +27,11 @@ class UserForm(ModelForm):
         model = User
         fields = ['email', 'username', 'password', 'password2']
 
+    def clean_password(self, *args, **kwargs):
+        password = self.cleaned_data.get('password')
+        validate_password(password)
+
+        return password
 
     def clean_password2(self, *args, **kwargs):
         password1 = self.cleaned_data.get('password')
@@ -39,6 +47,11 @@ class UserForm(ModelForm):
 
 
     def clean(self, *args, **kwargs):
-        self.cleaned_data.pop('password2')
+        if('password2' in self.cleaned_data):
+            self.cleaned_data.pop('password2')
+
+        # hash the password
+        password = self.cleaned_data.get('password')
+        self.cleaned_data['password'] = make_password(password)
 
         return self.cleaned_data

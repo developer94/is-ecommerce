@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 from account import models as account_models
-from company import models as company_models
 
 
 
@@ -18,14 +17,8 @@ class Customer(account_models.Account):
     )
     gender = models.CharField(null=True, max_length=1, choices=GENDER_CHOICES)
 
-
-
-class ComponentReservation(models.Model):
-    customer = models.ForeignKey(Customer)
-    component = models.ForeignKey(company_models.Component)
-    company = models.ForeignKey(company_models.Company)
-
-    date = models.DateField(auto_now_add=True)
-
-    status = models.CharField(max_length=140)
+    @property
+    def details_provided(self):
+        status = super(Customer, self).details_provided
+        return status and all([self.first_name, self.last_name, self.gender])
 

@@ -7,8 +7,9 @@
     <h1 class="text-center">Register</h1>
     <form action="{% url 'company:register' %}" method="post" />
       {% csrf_token %}
+      {{ form.non_field_errors }}
       <h2>Account details</h2>
-      {{ form|crispy }}
+      {{ user_form|crispy }}
 
       <h2>Company details</h2>
       {{ company_form|crispy }}

@@ -109,6 +109,10 @@
     background: none;
 }
 
+.sidebar-brand {
+    color: #666666;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

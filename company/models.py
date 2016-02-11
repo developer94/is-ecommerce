@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.core.validators import MinLengthValidator
+
 from account import models as account_models
+from customer import models as customer_models
 
 class Company(account_models.Account):
     name = models.CharField(max_length=50)
@@ -20,29 +22,4 @@ class Company(account_models.Account):
 
     def __unicode__(self):
         return '%s' % (self.name,)
-
-
-
-class ComponentCategory(models.Model):
-    name = models.CharField(max_length=50)
-
-    class Meta:
-        verbose_name_plural = 'component categories'
-
-    def __unicode__(self):
-        return '%s' % (self.name,)
-
-
-
-class Component(models.Model):
-    category = models.ForeignKey(ComponentCategory)
-
-
-
-class ComponentAvailable(models.Model):
-    component = models.ForeignKey(Component)
-
-    class Meta:
-        verbose_name = 'component availability'
-        verbose_name_plural = 'component availabilites'
 

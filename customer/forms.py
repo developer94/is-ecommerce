@@ -25,6 +25,22 @@ class SignUpForm(forms.ModelForm):
 
         self.helper.add_input(Submit('submit', 'Register'))
 
+    def clean_username(self, *args, **kwargs):
+        username = self.cleaned_data.get('username')
+
+        if auth_models.User.objects.filter(username=username).count() > 0:
+            raise ValidationError('Username already in use.')
+
+        return username
+
+    def clean_email(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+
+        if auth_models.User.objects.filter(email=email).count() > 0:
+            raise ValidationError('Email already in use.')
+
+        return email
+
     def clean_password2(self, *args, **kwargs):
         password1 = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
@@ -38,20 +54,24 @@ class SignUpForm(forms.ModelForm):
         return password2
 
     def clean(self, *args, **kwargs):
-        self.cleaned_data.pop('password2')
+        if 'password2' in self.cleaned_data:
+            self.cleaned_data.pop('password2')
 
         return self.cleaned_data
 
 
 
-class CustomerForm(forms.Form):
+class CustomerForm(forms.ModelForm):
     username = forms.CharField(max_length=30, disabled=True)
-    email = forms.EmailField(disabled=True)
+    email = forms.EmailField()
 
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
 
     gender = forms.ChoiceField(choices=models.Customer.GENDER_CHOICES)
+
+    field_order = ['first_name', 'last_name', 'gender' 'username', 'email',
+                   'telephone', 'address', 'city', 'country']
 
     class Meta:
         model = models.Customer

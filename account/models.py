@@ -15,3 +15,8 @@ class Account(PolymorphicModel):
     city = models.CharField(max_length=50)
     country = CountryField()
 
+    @property
+    def details_provided(self):
+        return all([self.user, self.address, self.telephone, self.city,
+                    self.country])
+

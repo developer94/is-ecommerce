@@ -19,9 +19,16 @@ from django.contrib import admin
 from django.contrib.auth.decorators import user_passes_test
 
 from ecommerce.views import HomeView, LandingPageView
+from ecommerce import settings
+
+admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
+    url(r'^$', HomeView.as_view(), name="home"),
+    url(r'^welcome/$', LandingPageView.as_view(), name="landing"),
+
     url(r'^admin/', admin.site.urls),
+    url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'^auth/', include('django.contrib.auth.urls', namespace="auth")),
 
     url(r'^customer/',
@@ -30,6 +37,6 @@ urlpatterns = [
     url(r'^company/',
         include('company.urls', namespace='company')),
 
-    url(r'^welcome/$', LandingPageView.as_view(), name="landing"),
-    url(r'^$', HomeView.as_view(), name="home"),
+    url(r'^company/',
+        include('component.urls', namespace='component')),
 ]
